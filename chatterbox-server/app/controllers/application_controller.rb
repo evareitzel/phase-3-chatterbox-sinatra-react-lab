@@ -5,15 +5,16 @@ class ApplicationController < Sinatra::Base
 
   # ordered by created_at in ascending order
   get '/messages' do
-    messages = Messages.all.order(:created_at)
+    messages = Message.all.order(:created_at)
     messages.to_json
+    # render json: messages
   end
 
   # creates a new message with a body and username from params, and returns the newly created post as JSON.
   post '/messages' do
     message = Message.create(
-        body: params[:body],
-        username: params[:username]
+      body: params[:body],
+      username: params[:username]
     )
     message.to_json
   end
@@ -60,4 +61,3 @@ end
   #   message.destroy
   #   message.to_json
   # end
-  

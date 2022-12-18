@@ -14,7 +14,11 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:9292/messages")
       .then((r) => r.json())
-      .then((messages) => setMessages(messages));
+      .then(messages => {
+        console.log(messages)
+        setMessages(messages)
+  })
+      // .then((messages) => setMessages(messages));
   }, []);
 
   function handleAddMessage(newMessage) {
